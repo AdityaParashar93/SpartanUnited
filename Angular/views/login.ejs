@@ -11,11 +11,15 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
  	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.14/angular-ui-router.min.js"></script>
  	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-resource.min.js"></script>
  	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	
+	
 	<!-- Loading the AngularJS file from /public/angularJS folder -->
 	<script src="angularjs/login.js"></script>
 <title>Login</title>
@@ -26,8 +30,8 @@
 <div class="row" ui-view="header"></div>
 </div>
 <div class="row">
-<div class="col-md-3" ui-view="sidebar"></div>
-<div class="col-md-9" ui-view="content"></div>
+<div class="col-md-3"><div class="row" ui-view="sidebar"></div></div>
+<div class="col-md-9" ><div class="row" ui-view="content"></div></div>
 </div>
 </div>
 </body>

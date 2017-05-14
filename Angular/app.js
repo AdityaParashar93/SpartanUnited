@@ -55,8 +55,13 @@ if ('development' === app.get('env')) {
 app.get('/', routes.index);
 app.get('/index',index.re);
 app.get('/index_student',index.re1);
+app.get('/index_student_subjects',index.re1);
+app.get('/index_student_grades',index.re1);
+app.get('/index_teacher',index.re1); 
 
-//POST Requests
+
+
+
 app.post('/checklogin', login.checkLogin);
 app.post('/registeruser', login.registeruser);
 app.post('/fetchall', login.fetchall);
