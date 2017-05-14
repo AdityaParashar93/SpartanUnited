@@ -168,4 +168,52 @@ cnn.on('ready', function(){
 			});
 		});
 	});
+	cnn.queue('fetch_student_queue', function(q){
+		q.subscribe(function(message, headers, deliveryInfo, m){
+			util.log(util.format( deliveryInfo.routingKey, message));
+			util.log("Message: "+JSON.stringify(message));
+			util.log("DeliveryInfo: "+JSON.stringify(deliveryInfo));
+			login.handle_request_fetch_student(message, function(err,res){
+
+				//return index sent
+				cnn.publish(m.replyTo, res, {
+					contentType:'application/json',
+					contentEncoding:'utf-8',
+					correlationId:m.correlationId
+				});
+			});
+		});
+	});
+	cnn.queue('fetch_parent_queue', function(q){
+		q.subscribe(function(message, headers, deliveryInfo, m){
+			util.log(util.format( deliveryInfo.routingKey, message));
+			util.log("Message: "+JSON.stringify(message));
+			util.log("DeliveryInfo: "+JSON.stringify(deliveryInfo));
+			login.handle_request_fetch_parent(message, function(err,res){
+
+				//return index sent
+				cnn.publish(m.replyTo, res, {
+					contentType:'application/json',
+					contentEncoding:'utf-8',
+					correlationId:m.correlationId
+				});
+			});
+		});
+	});
+	cnn.queue('fetch_teacher_queue', function(q){
+		q.subscribe(function(message, headers, deliveryInfo, m){
+			util.log(util.format( deliveryInfo.routingKey, message));
+			util.log("Message: "+JSON.stringify(message));
+			util.log("DeliveryInfo: "+JSON.stringify(deliveryInfo));
+			login.handle_request_fetch_teacher(message, function(err,res){
+
+				//return index sent
+				cnn.publish(m.replyTo, res, {
+					contentType:'application/json',
+					contentEncoding:'utf-8',
+					correlationId:m.correlationId
+				});
+			});
+		});
+	});
 });

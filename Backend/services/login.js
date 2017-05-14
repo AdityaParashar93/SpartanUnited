@@ -113,11 +113,6 @@ exports.handle_request_register_parent=function(msg,callback){
 }
 
 
-
-
-
-
-
 exports.handle_request_checkLogin_students = function(msg, callback){
 	var res={};
 	var json_responses;
@@ -156,6 +151,7 @@ exports.handle_request_checkLogin_students = function(msg, callback){
 		});
 	});
 };
+
 
 
 exports.handle_request_checkLogin_parents = function(msg, callback){
@@ -341,6 +337,109 @@ exports.handle_request_fetchall_teachers = function(msg, callback){
 						res.json_responses={"statusCode":405};
 						callback(null, res);
 					}
+				}
+		});
+		});
+	});
+};
+
+exports.handle_request_fetch_student = function(msg, callback){
+	var res={};
+	var json_responses;
+	console.log(msg);
+	mongo.connect(mongoURL,function(connection){
+		var coll=mongo.collection('SpartanUnited');
+		process.nextTick(function(){
+			coll.findOne({doctype:"students"},{students:{$elemMatch:{
+				user_email:msg.username
+				}}},function(err,user)
+			{
+				if(err) {
+					connection.close();
+					res.json_responses={"statusCode":401};
+					callback(null, res);
+	            }
+
+				else if(!user) {
+					connection.close();
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+				else {
+					connection.close();
+					console.log(user);
+					if(user.students){
+						res.json_responses={"statusCode":200,user:user.students[0]};
+						callback(null, res);
+					}
+					else{
+						res.json_responses={"statusCode":405};
+						callback(null, res);
+					}
+				}
+		});
+		});
+	});
+};
+
+exports.handle_request_fetch_parent = function(msg, callback){
+	var res={};
+	var json_responses;
+	console.log(msg);
+	mongo.connect(mongoURL,function(connection){
+		var coll=mongo.collection('SpartanUnited');
+		process.nextTick(function(){
+			coll.findOne({doctype:"parents"},{parents:{$elemMatch:{
+				user_email:msg.username
+				}}},function(err,user)
+			{
+				if(err) {
+					connection.close();
+					res.json_responses={"statusCode":401};
+					callback(null, res);
+	            }
+
+				else if(!user) {
+					connection.close();
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+				else {
+					console.log(user);
+					res.json_responses={"statusCode":200,user:user.parents[0]};
+					callback(null, res);
+				}
+		});
+		});
+	});
+};
+
+exports.handle_request_fetch_teacher = function(msg, callback){
+	var res={};
+	var json_responses;
+	console.log(msg);
+	mongo.connect(mongoURL,function(connection){
+		var coll=mongo.collection('SpartanUnited');
+		process.nextTick(function(){
+			coll.findOne({doctype:"teachers"},{teachers:{$elemMatch:{
+				user_email:msg.username
+				}}},function(err,user)
+			{
+				if(err) {
+					connection.close();
+					res.json_responses={"statusCode":401};
+					callback(null, res);
+	            }
+
+				else if(!user) {
+					connection.close();
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+				else {
+					console.log(user);
+					res.json_responses={"statusCode":200,user:user.teachers[0]};
+					callback(null, res);
 				}
 		});
 		});

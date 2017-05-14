@@ -1,4 +1,5 @@
 
+
 /**
  * Module dependencies.
  */
@@ -32,7 +33,7 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(expressSession({
 	secret: 'CMPE281_SpartanUnited',
-	resave: false,  //don't save session if unmodified
+	resave: true,  //don't save session if unmodified
 	saveUninitialized: false,	// don't create session until something stored
 	duration: 30 * 60 * 1000,    
 	activeDuration: 5 * 60 * 1000,
@@ -53,11 +54,13 @@ if ('development' === app.get('env')) {
 //GET Requests
 app.get('/', routes.index);
 app.get('/index',index.re);
+app.get('/index_student',index.re1);
 
 //POST Requests
 app.post('/checklogin', login.checkLogin);
 app.post('/registeruser', login.registeruser);
 app.post('/fetchall', login.fetchall);
+app.post('/fetch_user', login.fetch_user);
 
 //app.post('/registeruser', login.registeruser);
 
