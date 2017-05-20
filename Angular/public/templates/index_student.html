@@ -17,18 +17,18 @@ td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-    color:white;
+    color:black;
 }
 
 tr:nth-child(even) {
-    background-color: #63c2f9;
+    background-color: #f2f4f7;
 }
 
 tr:nth-child(odd) {
-    background-color: #f7f260;
+    background-color: #42e2f4;
 }
 </style>
-<div class="row" >
+<div class="row" ng-init="init_user('students');">
 <div class="col-md-12">
 <div class="row">
 <div class="col-md-1"></div>
@@ -58,17 +58,17 @@ tr:nth-child(odd) {
 </table>
 </div>
 <div class="col-md-5">
-<h5><span style="color:green;">Subject : Science</span></h5>
+<h5><span style="color:green;">Course : Web UI</span></h5>
 <table>
   <tr>
     <th>Assignment Number</th>
     <th>Total Marks</th>
     <th>Marks Obtained</th>
   </tr>
-  <tr ng-repeat="x in current_user.courses.science" ng-if="$index < 3">
-    <td>{{x.Assingment}}</td>
-    <td>{{x.Total_Marks}}</td>
-    <td>{{x.Marks_Obtained}}</td>
+  <tr ng-repeat="x in current_user.courses.webui" ng-if="$index < 3">
+    <td>{{x.assingment_name}}</td>
+    <td>{{x.total_marks}}</td>
+    <td>{{x.marks_obtained}}</td>
   </tr>
 </table>
 </div>
@@ -80,32 +80,32 @@ tr:nth-child(odd) {
 
 <div class="row">
 <div class="col-md-5">
-<h5><span style="color:green;">Subject : English</span></h5>
+<h5><span style="color:green;">Course : Distributed Systems</span></h5>
 <table>
   <tr>
     <th>Assignment Number</th>
     <th>Total Marks</th>
     <th>Marks Obtained</th>
   </tr>
-  <tr ng-repeat="x in current_user.courses.english" ng-if="$index < 3">
-    <td>{{x.Assingment}}</td>
-    <td>{{x.Total_Marks}}</td>
-    <td>{{x.Marks_Obtained}}</td>
+  <tr ng-repeat="x in current_user.courses.dist" ng-if="$index < 3">
+    <td>{{x.assingment_name}}</td>
+    <td>{{x.total_marks}}</td>
+    <td>{{x.marks_obtained}}</td>
   </tr>
 </table>
 </div>
 <div class="col-md-5" >
-<h5><span style="color:green;">Subject : Mathematics</span></h5>
+<h5><span style="color:green;">Course : Cloud Technologies</span></h5>
 <table>
   <tr>
     <th>Assignment Number</th>
     <th>Total Marks</th>
     <th>Marks Obtained</th>
   </tr>
-  <tr ng-repeat="x in current_user.courses.maths" ng-if="$index < 3">
-    <td>{{x.Assingment}}</td>
-    <td>{{x.Total_Marks}}</td>
-    <td>{{x.Marks_Obtained}}</td>
+  <tr ng-repeat="x in current_user.courses.cloud" ng-if="$index < 3">
+    <td>{{x.assingment_name}}</td>
+    <td>{{x.total_marks}}</td>
+    <td>{{x.marks_obtained}}</td>
   </tr>
 </table>
 </div>

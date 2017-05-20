@@ -25,7 +25,7 @@ tr:nth-child(even) {
 }
 
 tr:nth-child(odd) {
-    background-color: #0462f9;
+    background-color: #42e2f4;
 }
 </style>
 <div class="row" ng-init="init_teachers('teachers')">
@@ -33,33 +33,22 @@ tr:nth-child(odd) {
 <div class="row">
 <div class="col-md-1"></div>
 <div class="col-md-10"><br><br>
-<h3><span style="color:green;">Welcome to your academic dashboard Spartan !!!</span></h3>
+<h3><span style="color:green;">Welcome to Class Performance Page !!!</span></h3>
 </div>
 <div class="col-md-1"></div>
 </div>
 
+<div class="row">
+<div class="col-md-10">
+<h5><span style="color:green;">Grade Graph</span></h5>
+<div id="container"></div>
+</div>
+</div>
 
-<div class="row">
+
+
+<div class="row" ng-repeat="x in current_user.students">
 <div class="col-md-11">
-<h5><span style="color:green;">Your Information</span></h5>
-<table>
-    <tr>
-    	<td>First Name</td>
-    	<td>{{current_user.first_name}}</td>
- 	</tr>
- 	<tr>
-    	<td>Last Name</td>
-    	<td>{{current_user.last_name}}</td>
- 	</tr>
- 	<tr>
-    	<td>Email</td>
-    	<td>{{current_user.user_email}}</td>
- 	</tr>
-</table>
-</div>
-</div>
-<div class="row">
-<div class="col-md-5" ng-repeat="x in current_user.students">
 <h5><span style="color:green;">Course : {{current_user.course}}</span></h5>
 <h5><span style="color:green;">Student Name : {{x.first_name}} {{x.last_name}}</span></h5>
 <table ng-if="current_user.course=='Distributed Systems'">
@@ -68,7 +57,7 @@ tr:nth-child(odd) {
     <th>Total Marks</th>
     <th>Marks Obtained</th>
   </tr>
-  <tr ng-repeat="y in x.courses.dist" ng-if="$index < 3">
+  <tr ng-repeat="y in x.courses.dist" >
     <td>{{y.assingment_name}}</td>
     <td>{{y.total_marks}}</td>
     <td>{{y.marks_obtained}}</td>
@@ -80,7 +69,7 @@ tr:nth-child(odd) {
     <th>Total Marks</th>
     <th>Marks Obtained</th>
   </tr>
-  <tr ng-repeat="y in x.courses.webui" ng-if="$index < 3">
+  <tr ng-repeat="y in x.courses.webui" >
     <td>{{y.assingment_name}}</td>
     <td>{{y.total_marks}}</td>
     <td>{{y.marks_obtained}}</td>
@@ -92,7 +81,7 @@ tr:nth-child(odd) {
     <th>Total Marks</th>
     <th>Marks Obtained</th>
   </tr>
-  <tr ng-repeat="y in x.courses.dist" ng-if="$index < 3">
+  <tr ng-repeat="y in x.courses.dist" >
     <td>{{y.assingment_name}}</td>
     <td>{{y.total_marks}}</td>
     <td>{{y.marks_obtained}}</td>

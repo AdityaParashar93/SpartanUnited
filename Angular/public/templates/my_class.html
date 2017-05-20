@@ -1,0 +1,61 @@
+<style>
+#container {
+	min-width:300px;
+	max-width: 1200px;
+	height: 300px;
+	margin: 0 auto
+}
+</style>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    color:black;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f4f7;
+}
+
+tr:nth-child(odd) {
+    background-color: #42e2f4;
+}
+</style>
+<div class="row" ng-init="init_teachers('teachers')">
+<div class="col-md-12">
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-10"><br><br>
+<h3><span style="color:green;">Welcome to Your Class Page !!!</span></h3>
+</div>
+<div class="col-md-1"></div>
+</div>
+
+<div class="row" >
+<div class="col-md-11" >
+<h5><span style="color:green;">Course : {{current_user.course}}</span></h5>
+
+<table >
+  <tr>
+    <th>Student First Name</th>
+    <th>Student Last Name</th>
+    <th>Student Email</th>
+  </tr>
+  <tr ng-repeat="x in current_user.students" >
+    <td>{{x.first_name}}</td>
+    <td>{{x.last_name}}</td>
+    <td>{{x.user_email}}</td>
+  </tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+

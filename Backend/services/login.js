@@ -18,9 +18,9 @@ exports.handle_request_register_student=function(msg,callback){
 						user_password:msg.password,
 						message:[],
 						courses:{
-							"maths":[],
-							"science":[],
-							"english":[]
+							"webui":[],
+							"cloud":[],
+							"dist":[]
 						}}}},function(err,user){
 					if(err) {
 					connection.close();
@@ -445,3 +445,280 @@ exports.handle_request_fetch_teacher = function(msg, callback){
 		});
 	});
 };
+
+
+
+
+
+
+exports.handle_post_grades_webui=function(msg,callback){
+	var res={};
+	var json_responses;
+	mongo.connect(mongoURL,function(connection){
+		var coll=mongo.collection('SpartanUnited');
+		process.nextTick(function(){
+			coll.update(
+					{"doctype":"students","students.user_email":msg.student_id},
+					{$push:{"students.$.courses.webui":
+					    {
+					    "assingment_name":msg.assignment_name,
+					     "total_marks":msg.assignment_total,
+					      "marks_obtained":msg.assignment_score
+					     }
+					                }
+					},function(err,user){
+				if(err) {
+					connection.close();
+					console.log(err);
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+
+				else if(!user) {
+					connection.close();
+					console.log("did not find");
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+				else {
+					console.log(user);
+					res.json_responses={"statusCode":200};
+					callback(null, res);
+				}
+		});
+		});
+	});
+}
+
+
+exports.handle_post_grades_dist=function(msg,callback){
+	var res={};
+	var json_responses;
+	mongo.connect(mongoURL,function(connection){
+		var coll=mongo.collection('SpartanUnited');
+		process.nextTick(function(){
+			coll.update(
+					{"doctype":"students","students.user_email":msg.student_id},
+					{"$push":{"students.$.courses.dist":
+					    {
+					    "assingment_name":msg.assignment_name,
+					     "total_marks":msg.assignment_total,
+					      "marks_obtained":msg.assignment_score
+					     }
+					                }
+					},function(err,user){
+				if(err) {
+					connection.close();
+					console.log(err);
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+
+				else if(!user) {
+					connection.close();
+					console.log("did not find");
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+				else {
+					console.log(user);
+					res.json_responses={"statusCode":200};
+					callback(null, res);
+				}
+		});
+		});
+	});
+}
+
+exports.handle_post_grades_cloud=function(msg,callback){
+	var res={};
+	var json_responses;
+	mongo.connect(mongoURL,function(connection){
+		var coll=mongo.collection('SpartanUnited');
+		process.nextTick(function(){
+			coll.update(
+					{"doctype":"students","students.user_email":msg.student_id},
+					{"$push":{"students.$.courses.cloud":
+					    {
+					    "assingment_name":msg.assignment_name,
+					     "total_marks":msg.assignment_total,
+					      "marks_obtained":msg.assignment_score
+					     }
+					                }
+					},function(err,user){
+				if(err) {
+					connection.close();
+					console.log(err);
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+
+				else if(!user) {
+					connection.close();
+					console.log("did not find");
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+				else {
+					console.log(user);
+					res.json_responses={"statusCode":200};
+					callback(null, res);
+				}
+		});
+		});
+	});
+}
+
+
+exports.send_message_teacher=function(msg,callback){
+	var res={};
+	var json_responses;
+	mongo.connect(mongoURL,function(connection){
+		var coll=mongo.collection('SpartanUnited');
+		process.nextTick(function(){
+			coll.update(
+					{"doctype":"teachers","teachers.user_email":msg.to},
+					{"$push":{"teachers.$.message":
+					    {
+					    "senders_first_name":msg.senders_first_name,
+					     "senders_last_name":msg.senders_last_name,
+					      "senders_email":msg.senders_email,
+					      "message":msg.message
+					    }
+					                }
+					},function(err,user){
+				if(err) {
+					connection.close();
+					console.log(err);
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+
+				else if(!user) {
+					connection.close();
+					console.log("did not find");
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+				else {
+					console.log(user);
+					res.json_responses={"statusCode":200};
+					callback(null, res);
+				}
+		});
+		});
+	});
+}
+
+
+exports.send_message_student=function(msg,callback){
+	var res={};
+	var json_responses;
+	mongo.connect(mongoURL,function(connection){
+		var coll=mongo.collection('SpartanUnited');
+		process.nextTick(function(){
+			coll.update(
+					{"doctype":"students","students.user_email":msg.to},
+					{"$push":{"students.$.message":
+					    {
+					    "senders_first_name":msg.senders_first_name,
+					     "senders_last_name":msg.senders_last_name,
+					      "senders_email":msg.senders_email,
+					      "message":msg.message
+					    }
+					                }
+					},function(err,user){
+				if(err) {
+					connection.close();
+					console.log(err);
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+
+				else if(!user) {
+					connection.close();
+					console.log("did not find");
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+				else {
+					console.log(user);
+					res.json_responses={"statusCode":200};
+					callback(null, res);
+				}
+		});
+		});
+	});
+}
+
+
+exports.send_message_admin=function(msg,callback){
+	var res={};
+	var json_responses;
+	mongo.connect(mongoURL,function(connection){
+		var coll=mongo.collection('SpartanUnited');
+		process.nextTick(function(){
+			coll.update(
+					{"doctype":"admin"},
+					{"$push":{"message":
+					    {
+					    "senders_first_name":msg.senders_first_name,
+					     "senders_last_name":msg.senders_last_name,
+					      "senders_email":msg.senders_email,
+					      "message":msg.message
+					    }
+					                }
+					},function(err,user){
+				if(err) {
+					connection.close();
+					console.log(err);
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+
+				else if(!user) {
+					connection.close();
+					console.log("did not find");
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+				else {
+					console.log(user);
+					res.json_responses={"statusCode":200};
+					callback(null, res);
+				}
+		});
+		});
+	});
+}
+
+exports.init_admin=function(msg,callback){
+	var res={};
+	var json_responses;
+	mongo.connect(mongoURL,function(connection){
+		var coll=mongo.collection('SpartanUnited');
+		process.nextTick(function(){
+			coll.findOne({user_email:"admin@spartanunited.com"},function(err,user){
+				if(err) {
+					connection.close();
+					console.log(err);
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+
+				else if(!user) {
+					connection.close();
+					console.log("did not find");
+					res.json_responses={"statusCode":405};
+					callback(null, res);
+	            }
+				else {
+					connection.close();
+					console.log(user);
+					res.json_responses={"statusCode":200,"user":user};
+					callback(null, res);
+				}
+		});
+		});
+	});
+}

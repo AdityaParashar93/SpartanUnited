@@ -58,7 +58,18 @@ app.get('/index_student',index.re1);
 app.get('/index_student_subjects',index.re1);
 app.get('/index_student_grades',index.re1);
 app.get('/index_teacher',index.re1); 
-
+app.get('/grade_assignment',index.re1); 
+app.get('/class_performance',index.re1); 
+app.get('/my_class',index.re1); 
+app.get('/contact_teacher',index.re1);
+app.get('/contact_admin',index.re1);
+app.get('/contact_admin_teacher',index.re1);
+app.get('/contact_student',index.re1);
+app.get('/admin',index.re1);
+app.get('/admin_index',index.re1);
+app.get('/admin_student',index.re1);
+app.get('/admin_teacher',index.re1);
+app.get('/student_to_student',index.re1);
 
 
 
@@ -66,8 +77,13 @@ app.post('/checklogin', login.checkLogin);
 app.post('/registeruser', login.registeruser);
 app.post('/fetchall', login.fetchall);
 app.post('/fetch_user', login.fetch_user);
+app.post('/post_grades', login.post_grades);
+app.post('/send_message_teacher',login.send_message_teacher);
+app.post('/send_message_student',login.send_message_student);
+app.post('/send_message_admin',login.send_message_admin);
+app.post('/init_admin',login.init_admin);
+app.post('/init_student_to_student',login.init_student_to_student);
 
-//app.post('/registeruser', login.registeruser);
 
 
 //

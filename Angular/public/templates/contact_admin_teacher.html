@@ -1,0 +1,101 @@
+<style>
+#container {
+	min-width:300px;
+	max-width: 1200px;
+	height: 300px;
+	margin: 0 auto
+}
+</style>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    color:black;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f4f7;
+}
+
+tr:nth-child(odd) {
+    background-color: #42e2f4;
+}
+</style>
+<div class="row" ng-init="init_teachers('teachers');">
+<div class="col-md-12">
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-10"><br><br>
+<h3><span style="color:green;">Welcome to Communications page !!!</span></h3>
+</div>
+<div class="col-md-1"></div>
+</div>
+<div class="row">
+<div class="col-md-11">
+
+
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Communication Form</legend>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Administrator</label>
+  <div class="col-md-4">
+    <select id="selectbasic" name="selectbasic" class="form-control" ng-model="to">
+      <option value="admin@spartanunited.com">Administrator</option>
+    </select>
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textarea">Message</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="textarea" name="textarea" ng-model="message">default text</textarea>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click="send_message_admin(to,message);">Send Message</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+
+
+</div>
+<div class="col-md-11">
+
+<h5><span style="color:green;">Your Inbox</span></h5>
+<table>
+  <tr>
+    <th>Senders Email</th>
+    <th>Senders Full Name</th>
+    <th>Message</th>
+  </tr>
+  <tr ng-repeat="x in current_user.message" >
+    <td>{{x.senders_email}}</td>
+    <td>{{x.senders_first_name}} {{x.senders_last_name}}</td>
+    <td>{{x.message}}</td>
+  </tr>
+</table>
+</div>
+</div>
+
+</div>
+</div>

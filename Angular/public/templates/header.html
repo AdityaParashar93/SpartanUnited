@@ -24,11 +24,11 @@
       </div>
     </nav>
     <!--/ Navigation bar-->
-    
+
     <!--Modal box-->
     <div class="modal" id="login" role="dialog">
       <div class="modal-dialog">
-      
+
         <!-- Modal content no 1-->
         <div class="modal-content">
           <div class="modal-header">
@@ -37,8 +37,8 @@
           </div>
           <div class="modal-body padtrbl">
 			<form >
-			
-	
+
+
 			<div class="form-group">
 				<label for="email">Email:</label>
 					<input type="email" class="form-control" ng-model="username" placeholder="Enter email">
@@ -48,17 +48,17 @@
 					<input type="password" class="form-control" ng-model="password" placeholder="Enter password">
 			</div>
 			<div class="form-group">
-			
+
 			<!-- Select Basic -->
   			<label class="control-label" for="selectbasic">Who are you </label>
- 
+
     			<select id="selectbasic" name="selectbasic" class="form-control" ng-model="role">
       					<option value="students">Students</option>
       					<option value="teachers">Teachers</option>
       					<option value="parents">Parents</option>
     			</select>
- 
-			
+
+
 			</div>
 			<div class="checkbox">
 				<label><input type="checkbox"> Remember me</label>
@@ -72,10 +72,10 @@
 			<input type="submit" class="btn btn-success btn-block btn-lg"  value="Login"   ng-click="submit();" />
 			<input type="submit" class="btn btn-success btn-block btn-lg" value="Register" data-target="#register" data-toggle="modal"/>
 			</form>
-				
-				
-				
-     
+
+
+
+
           </div>
         </div>
 
@@ -86,7 +86,7 @@
 	    <!--Modal box-->
     <div class="modal fade" id="register" role="dialog" ng-controller="login">
       <div class="modal-dialog">
-      
+
         <!-- Modal content no 1-->
         <div class="modal-content">
           <div class="modal-header">
@@ -94,10 +94,10 @@
             	<h2>Please Sign Up <small>It's free and always will be.</small></h2>
           </div>
           <div class="modal-body padtrbl">
-			
-			
+
+
 			<form role="form">
-			
+
 			<hr class="colorgraph">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
@@ -111,24 +111,24 @@
 					</div>
 				</div>
 			</div>
-			
-			
+
+
 			<div class="form-group">
-			
+
 			<!-- Select Basic -->
   			<label class="control-label" for="selectbasic">Who are you </label>
- 
+
     			<select id="selectbasic" name="selectbasic" class="form-control" ng-model="role">
       					<option value="students">Students</option>
       					<option value="teachers">Teachers</option>
       					<option value="parents">Parents</option>
     			</select>
- 
-			
+
+
 			</div>
-			
-			
-			
+
+
+
 			<div class="form-group">
 				<input type="email" name="email" ng-model="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" required>
 			</div>
@@ -147,7 +147,7 @@
 			<div class="row">
 				<div class="col-xs-4 col-sm-3 col-md-3">
 					<span class="checkbox">
-						<label><input type="checkbox"> I Agree</label>						
+						<label><input type="checkbox"> I Agree</label>
 					</span>
 				</div>
 				<div class="col-xs-8 col-sm-9 col-md-9">
@@ -165,10 +165,10 @@
 				<div class="col-xs-12 col-md-6"><input type="submit" class="btn btn-success btn-block btn-lg" data-target="#login" data-toggle="modal" value="Login"/></div>
 			</div>
 		</form>
-				
-				
-				
-     
+
+
+
+
           </div>
         </div>
 
